@@ -83,10 +83,6 @@ client.on('message', message => {
         console.log(messageReaction);
     }
 
-    if (command === 'reactionrole') {
-        client.commands.get('reactionrole').execute(message, args, Discord, client);
-    }
-
     if (!command) return;
 
     if (command.permissions) {
