@@ -50,6 +50,12 @@ client.on('messageReactionAdd', async (messageReaction, user) => {
         if (messageReaciton.emoji.name === dollarEmoji)
             const query = querystring.stringify({ term: args.join(' ')}); 
             const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
+
+            if (!list.length) {
+                return message.channel.send(`No results found for **${args.join(' ')}**.`);
+            }
+
+            message.channel.send(list[0].definition);
     } else {
         return;
     }
