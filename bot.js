@@ -75,7 +75,7 @@ client.on('messageReactionRemove', async (messageReaction, user) => {
 });
 
 
-client.on('message', message => {
+client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
@@ -86,7 +86,7 @@ client.on('message', message => {
 			return message.channel.send('You need to supply a search term!');
 		}
             const query = querystring.stringify({ term: args.join(' ')}); 
-            
+
             const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
 
             if (!list.length) {
