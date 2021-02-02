@@ -81,8 +81,12 @@ client.on('message', message => {
     const commandName = args.shift().toLowerCase();
     console.log(message.content);
 
-    if (message.content === 'testAPI')
+    if (message.content === 'testAPI'){
+        if (!args.length) {
+			return message.channel.send('You need to supply a search term!');
+		}
             const query = querystring.stringify({ term: args.join(' ')}); 
+            
             const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
 
             if (!list.length) {
@@ -90,9 +94,9 @@ client.on('message', message => {
             }
 
             message.channel.send(list[0].definition);
-
+        }
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
+        
     if (!command) return;
 
     if (command.permissions) {
