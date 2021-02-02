@@ -47,15 +47,6 @@ client.on('messageReactionAdd', async (messageReaction, user) => {
         if (messageReaction.emoji.name === gruenRoleEmoji) {
             await messageReaction.message.guild.members.cache.get(user.id).roles.add(gruenRole);
         }
-        if (messageReaciton.emoji.name === dollarEmoji)
-            const query = querystring.stringify({ term: args.join(' ')}); 
-            const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
-
-            if (!list.length) {
-                return message.channel.send(`No results found for **${args.join(' ')}**.`);
-            }
-
-            message.channel.send(list[0].definition);
     } else {
         return;
     }
@@ -89,6 +80,16 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     console.log(message.content);
+
+    if (message.content === 'testAPI')
+            const query = querystring.stringify({ term: args.join(' ')}); 
+            const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
+
+            if (!list.length) {
+                return message.channel.send(`No results found for **${args.join(' ')}**.`);
+            }
+
+            message.channel.send(list[0].definition);
 
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
