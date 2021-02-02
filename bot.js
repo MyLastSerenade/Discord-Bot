@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
+const fetch = require('node-fetch');
 
 const cooldowns = new Discord.Collection();
 
@@ -25,6 +26,12 @@ function readyDiscord() {
 }
 
 client.once('ready', readyDiscord);
+
+if (command === 'cat') {
+	const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+
+	message.channel.send(file);
+}
 
 client.on('messageReactionAdd', async (messageReaction, user) => {
     const message = messageReaction.message;
