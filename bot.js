@@ -27,12 +27,6 @@ function readyDiscord() {
 
 client.once('ready', readyDiscord);
 
-if (command === 'cat') {
-	const { file } = fetch('https://aws.random.cat/meow').then(response => response.json());
-
-	message.channel.send(file);
-}
-
 client.on('messageReactionAdd', async (messageReaction, user) => {
     const message = messageReaction.message;
     const blueRole = message.guild.roles.cache.find(role => role.name === "Blau");
@@ -86,12 +80,14 @@ client.on('message', message => {
 
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    if (message.messageReactionAdd) {
-        console.log(messageReaction);
-    }
-
     if (!command) return;
 
+    if (command === 'cat') {
+        const { file } = fetch('https://aws.random.cat/meow').then(response => response.json());
+    
+        message.channel.send(file);
+    }
+    
     if (command.permissions) {
         const authorPerms = message.channel.permissionsFor(message.author);
         if (!authorPerms || !authorPerms.has(command.permissions)) {
