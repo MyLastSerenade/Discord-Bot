@@ -28,7 +28,7 @@ function readyDiscord() {
 client.once('ready', readyDiscord);
 
 if (command === 'cat') {
-	const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+	const { file } = fetch('https://aws.random.cat/meow').then(response => response.json());
 
 	message.channel.send(file);
 }
