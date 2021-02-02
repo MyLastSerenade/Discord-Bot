@@ -3,6 +3,8 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const fetch = require('node-fetch');
+const querystring = require('querystring');
+const { args } = require('./commands/cat');
 
 const cooldowns = new Discord.Collection();
 
@@ -14,6 +16,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 const blueRoleEmoji = '💙';
 const gruenRoleEmoji = '💚';
+const dollarEmoji = ':dollar:';
 const channel = '802308065537818635';
 
 for (const file of commandFiles) {
@@ -44,6 +47,9 @@ client.on('messageReactionAdd', async (messageReaction, user) => {
         if (messageReaction.emoji.name === gruenRoleEmoji) {
             await messageReaction.message.guild.members.cache.get(user.id).roles.add(gruenRole);
         }
+        if (messageReaciton.emoji.name === dollarEmoji)
+            const query = querystring.stringify({ term: args.join(' ')}); 
+            const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
     } else {
         return;
     }
@@ -82,12 +88,6 @@ client.on('message', message => {
 
     if (!command) return;
 
-    if (command === 'cat') {
-        const { file } = fetch('https://aws.random.cat/meow').then(response => response.json());
-    
-        message.channel.send(file);
-    }
-    
     if (command.permissions) {
         const authorPerms = message.channel.permissionsFor(message.author);
         if (!authorPerms || !authorPerms.has(command.permissions)) {
