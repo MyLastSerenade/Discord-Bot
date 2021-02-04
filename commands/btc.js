@@ -2,7 +2,6 @@ module.exports = {
     name: 'btc',
     cooldown: 500,
     description: 'Make an api call',
-    args: true,
     execute(message, args) {
         let request = new XMLHttpRequest();
         request.open("GET", "https://blockchain.info/tobtc?currency=USD&value=500")
