@@ -10,6 +10,7 @@ module.exports = {
             console.log(request);
             if (request.status == 200) {
                 console.log(JSON.parse(request.response));
+                message.channel.send(request.response);
             } else {
                 console.log(`error ${request.status} ${request.statusText}`);
             }
