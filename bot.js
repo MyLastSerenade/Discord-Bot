@@ -4,7 +4,6 @@ const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const fetch = require('node-fetch');
 const querystring = require('querystring');
-const { args } = require('./commands/cat');
 
 const cooldowns = new Discord.Collection();
 
@@ -81,20 +80,7 @@ client.on('message', async message => {
     const commandName = args.shift().toLowerCase();
     console.log(message.content);
 
-    if (message.content === 'testAPI'){
-        if (!args.length) {
-			return message.channel.send('You need to supply a search term!');
-		}
-            const query = querystring.stringify({ term: args.join(' ')}); 
 
-            const { list } = await fetch(`https://blockchain.info/tobtc?currency=EUR&value=500${query}`).then(response => response.json());
-
-            if (!list.length) {
-                return message.channel.send(`No results found for **${args.join(' ')}**.`);
-            }
-
-            message.channel.send(list[0].definition);
-        }
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         
     if (!command) return;
