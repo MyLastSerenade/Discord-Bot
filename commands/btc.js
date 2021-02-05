@@ -1,28 +1,16 @@
-const { default: fetch } = require("node-fetch");
+const axios = require('axios');
 
 module.exports = {
     name: 'btc',
     cooldown: 500,
     description: 'Make an api call',
     execute(message, args) {
-        const request = new Request('https://blockchain.info/tobtc?currency=USD&value=500', {method: 'POST', body: '{ list }'});
-        const url = request.url;
-        const methiod = request.method;
-        const bodyUsed = request.bodyUsed;
-
-        fetch(request).then(response => {
-            if(response.status === 200) {
-                console.log(response.json)
-                return response.json();
-            } else {
-                throw new Error('Something went wrong on api server!')
-            }
+        axios.get('https://blockchain.info/tobtc?currency=USD&value=500')
+        .then((res) => {
+            console.log('RES', res)
         })
-        .then(response => {
-            console.debug(response);
-        }) .catch(error => {
-            console.error(error);
-        });
-    message.channel.send(response.json);
+        .catch((err) => {
+            console.log('ERR', err)
+        })
     }
 }
