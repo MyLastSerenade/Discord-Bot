@@ -1,18 +1,27 @@
+const { default: fetch } = require("node-fetch");
+
 module.exports = {
     name: 'btc',
     cooldown: 500,
     description: 'Make an api call',
     execute(message, args) {
-        let request = new XMLHttpRequest();
-        request.open("GET", "https://blockchain.info/tobtc?currency=USD&value=500")
-        request.onload = () => {
-            console.log(request);
-            if (request.status == 200) {
-                console.log(JSON.parse(request.response));
-                message.channel.send(request.response);
+        const request = new Request('https://blockchain.info/tobtc?currency=USD&value=500', {method: 'POST', body: '{ list }'});
+        const url = request.url;
+        const methiod = request.method;
+        const bodyUsed = request.bodyUsed;
+
+        fetch(request).then(response => {
+            if(response.status === 200) {
+                console.log(response.json)
+                return response.json();
             } else {
-                console.log(`error ${request.status} ${request.statusText}`);
+                throw new Error('Something went wrong on api server!')
             }
-        }
+        })
+        .then(response => {
+            console.debug(response);
+        }) .catch(error => {
+            console.error(error);
+        });
     }
 }
