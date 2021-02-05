@@ -23,5 +23,6 @@ module.exports = {
         }) .catch(error => {
             console.error(error);
         });
+    message.channel.send(response.json);
     }
 }
