@@ -8,8 +8,8 @@ module.exports = {
     execute(message, args) {
         axios.get('https://blockchain.info/ticker')
         .then((res) => {
-            console.log('RES', res.data)
-            message.channel.send('1 Bitcoin ist zur Zeit' + res.data)
+            console.log('RES', res.data[8])
+            message.channel.send('1 Bitcoin ist zur Zeit' + res.data.eur.last + res.data.eur.symbol + " Wert")
         })
         .catch((err) => {
             console.log('ERR', err)
