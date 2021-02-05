@@ -8,7 +8,7 @@ module.exports = {
         axios.get('https://blockchain.info/tobtc?currency=EUR&value=1000')
         .then((res) => {
             console.log('RES', res.data)
-            message.channel.send('1000€ sind zur Zeit ', res.data, ' wert!')
+            message.channel.send('1000€ sind zur Zeit ' + res.data + ' Bitcoin wert!')
         })
         .catch((err) => {
             console.log('ERR', err)
