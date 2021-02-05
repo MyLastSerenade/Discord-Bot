@@ -7,7 +7,7 @@ module.exports = {
     execute(message, args) {
         axios.get('https://blockchain.info/tobtc?currency=USD&value=500')
         .then((res) => {
-            console.log('RES', res)
+            console.log('RES', res.data)
         })
         .catch((err) => {
             console.log('ERR', err)
