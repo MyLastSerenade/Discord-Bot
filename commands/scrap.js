@@ -9,10 +9,8 @@ module.exports = {
             headless: true,
             defaultViewport: null,
             args: [
-                "--incognito",
                 "--no-sandbox",
-                "--single-process",
-                "--no-zygote"
+                "--single-process"
             ],
         };
         async function scrapeChannel(url) {
