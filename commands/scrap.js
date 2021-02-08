@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 
 module.exports = {
-    name: 'beep',
+    name: 'scrap',
     cooldown: 5,
-    description: 'Beep!',
+    description: 'scraping for some text',
     execute(message, args) {
         const chromeOptions = {
             headless: true,
