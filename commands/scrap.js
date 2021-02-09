@@ -10,7 +10,7 @@ module.exports = {
             defaultViewport: null,
         }; */
         async function scrapeChannel(url) {
-            const browser = await puppeteer.launch(chromeOptions);
+            const browser = await puppeteer.launch();
             const page = await browser.newPage();
             await page.goto(url);
 
