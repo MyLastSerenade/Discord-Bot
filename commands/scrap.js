@@ -5,14 +5,10 @@ module.exports = {
     cooldown: 5,
     description: 'scraping for some text',
     execute(message, args) {
-        const chromeOptions = {
+       /*  const chromeOptions = {
             headless: true,
             defaultViewport: null,
-            args: [
-                "--no-sandbox",
-                "--single-process"
-            ],
-        };
+        }; */
         async function scrapeChannel(url) {
             const browser = await puppeteer.launch(chromeOptions);
             const page = await browser.newPage();
