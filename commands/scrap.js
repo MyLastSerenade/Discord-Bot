@@ -22,7 +22,7 @@ module.exports = {
             const name = await text.jsonValue();
             browser.close();
             console.log({ name })
-            message.channel.send(name)
+            message.channel.send({ name })
             return { name }
         }
         scrapeChannel('https://www.kreis-heinsberg.de/aktuelles/aktuelles/?pid=5149');
