@@ -1,16 +1,19 @@
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
 
 module.exports = {
     name: 'scrap',
     cooldown: 5,
     description: 'scraping for some text',
     execute(message, args) {
-       /*  const chromeOptions = {
+        const chromeOptions = {
             headless: true,
             defaultViewport: null,
-        }; */
+            args: [
+                "--no-sandbox"
+            ],
+        };
         async function scrapeChannel(url) {
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch(chromeOptions);
             const page = await browser.newPage();
             await page.goto(url);
 
