@@ -1,3 +1,4 @@
+//Only Works with the dependencies from https://elements.heroku.com/buildpacks/jontewks/puppeteer-heroku-buildpack
 const puppeteer = require('puppeteer');
 
 module.exports = {
@@ -21,8 +22,7 @@ module.exports = {
             const text = await el.getProperty('textContent');
             const name = await text.jsonValue();
             browser.close();
-            console.log({ name })
-            message.channel.send("Die 7-Tage-Inzidenz im Kreis Heinsberg liegt bei: " + name)
+            message.channel.send("Die 7-Tage-Inzidenz im Kreis Heinsberg liegt bei: " + name + " Neuinfektionen")
             return { name }
         }
         scrapeChannel('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
