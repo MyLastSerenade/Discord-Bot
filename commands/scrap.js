@@ -17,7 +17,7 @@ module.exports = {
             const page = await browser.newPage();
             await page.goto(url);
 
-            const [el] = await page.$x('//*[@id="directory"]/div/p[185]/text()')
+            const [el] = await page.$x('/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b')
             const text = await el.getProperty('textContent');
             const name = await text.jsonValue();
             browser.close();
@@ -25,7 +25,7 @@ module.exports = {
             message.channel.send({ name })
             return { name }
         }
-        scrapeChannel('https://www.kreis-heinsberg.de/aktuelles/aktuelles/?pid=5149');
+        scrapeChannel('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
 
 
     },   
