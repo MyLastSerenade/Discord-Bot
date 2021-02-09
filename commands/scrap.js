@@ -22,7 +22,7 @@ module.exports = {
             const name = await text.jsonValue();
             browser.close();
             console.log({ name })
-            message.channel.send("Die 7-Tage-Inzidenz im Kreis Heinsberg liegt bei" + name.name)
+            message.channel.send("Die 7-Tage-Inzidenz im Kreis Heinsberg liegt bei" + name)
             return { name }
         }
         scrapeChannel('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
