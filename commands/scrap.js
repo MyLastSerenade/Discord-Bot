@@ -13,7 +13,7 @@ module.exports = {
                 "--no-sandbox"
             ],
         };
-        async function scrapeChannel(url) {
+        async function scrapeChannel(url, stadtName) {
             const browser = await puppeteer.launch(chromeOptions);
             const page = await browser.newPage();
             await page.goto(url);
@@ -22,10 +22,11 @@ module.exports = {
             const text = await el.getProperty('textContent');
             const name = await text.jsonValue();
             browser.close();
-            message.channel.send("Die 7-Tage-Inzidenz im Kreis Heinsberg liegt bei: " + name + " Neuinfektionen")
+            message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + name + " Neuinfektionen")
             return { name }
         }
-        scrapeChannel('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
+        scrapeChannel('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/', "Im Kreis Heinsberg");
+        scrapeChannel('https://www.corona-in-zahlen.de/landkreise/sk%20m%C3%B6nchengladbach/', "in Mönchengladabch");
 
 
     },
