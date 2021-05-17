@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 
 module.exports = {
-    name: 'scrap',
+    name: 'hs',
     cooldown: 5,
     description: 'scraping for some text',
     execute(message, args) {
@@ -27,7 +27,7 @@ module.exports = {
             return { name }
         }
         scrapeChannel('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/', "im Kreis Heinsberg");
-        scrapeChannel('https://www.corona-in-zahlen.de/landkreise/sk%20m%C3%B6nchengladbach/', "in Mönchengladabch");
+        
 
 
     },
