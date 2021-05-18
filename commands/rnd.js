@@ -34,7 +34,7 @@ module.exports = {
             return url;
         }
         async function scrapeChannel(url) {
-            const browser = await puppeteer.launch({ headless: false });
+            const browser = await puppeteer.launch(chromeOptions);
             const page = await browser.newPage();
             await page.goto(url);
         
