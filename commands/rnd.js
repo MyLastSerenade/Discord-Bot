@@ -43,7 +43,7 @@ module.exports = {
             const name = await src.jsonValue();
         
             browser.close();
-            console.log(name);
+            message.channel.send("Random Screenshot " + name);
             return { name };
         
         }
