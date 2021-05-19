@@ -18,7 +18,7 @@ module.exports = {
         abcmax = 23;
         const abc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-        function random() {
+        function rndTwoCharFourDigit() {
             url = "";
             for (i = 0; i < 7; i++) {
                 if (i < 2) {
@@ -44,12 +44,13 @@ module.exports = {
 
             browser.close();
             if (name == 'https://st.prntscr.com/2021/04/08/1538/img/0_173a7b_211be8ff.png') {
-                scrapeChannel(random());
-            }
+                scrapeChannel(rndTwoCharFourDigit());
+            } else {
             message.channel.send("Random Screenshot " + name);
             return { name };
+        }
 
         }
-        scrapeChannel(random());
+        scrapeChannel(rndTwoCharFourDigit());
     },
 };
