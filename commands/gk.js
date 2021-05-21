@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 
 module.exports = {
-    name: 'dnw',
+    name: 'gk',
     cooldown: 5,
     description: 'scraping for some text',
     execute(message, args) {
@@ -18,15 +18,15 @@ module.exports = {
             const page = await browser.newPage();
             await page.goto(url);
 
-            const [el] = await page.$x('//*[@id="tab_wrapper"]/div[2]/div/div[2]/table/tbody/tr[3]/td[3]/div')
+            const [el] = await page.$x('/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b')
             const text = await el.getProperty('textContent');
             const name = await text.jsonValue();
             browser.close();
-            message.channel.send("Es sind gerade " + name + "C " + stadtName);
+            message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + name + " Neuinfektionen");
             message.channel.send("Quelle: " + url);
             return { name }
         }
-        scrapeChannel('https://www.meteoblue.com/en/weather/week/d%c3%bcren_germany_2934486', "in Düren");
+        scrapeChannel('https://www.corona-in-zahlen.de/landkreise/sk%20gelsenkirchen/', "in Gelsenkirchen");
         
 
 
