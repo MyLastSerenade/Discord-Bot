@@ -39,16 +39,18 @@ module.exports = {
             return { invaseivePatientsReturn }
         }
 
-        function postToChannel(sevenDayI, invasiveP, url, stadtName) {
-            message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + sevenDayI + 
-            " Neuinfektionen. Zur Zeit gibt es " + invasiveP + "Intensivmedizinisch behandelte COVID‑19 Patienten!");
+        async function postToChannel(url, stadtName) {
+            const a = await scrapeForSevenDayIncidence('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
+            const b = await scrapeForInvasivePatients('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
+
+            message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + a + 
+            " Neuinfektionen. Zur Zeit gibt es " + b + "Intensivmedizinisch behandelte COVID‑19 Patienten!");
             message.channel.send("Quelle: " + url);
             
         }
-        var scrape1 = scrapeForSevenDayIncidence('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
-        var scrape2 = scrapeForInvasivePatients('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
-
-        postToChannel(scrape1, scrape2, "https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/", "im Kreis Heinsberg")
+        
+    
+        postToChannel("https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/", "im Kreis Heinsberg")
         
 
 
