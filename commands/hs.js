@@ -44,7 +44,7 @@ module.exports = {
             const b = await scrapeForInvasivePatients('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
 
             message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + a.sevenDayIncidenceReturn + 
-            " Neuinfektionen. Zur Zeit gibt es " + b.invaseivePatientsReturn + "Intensivmedizinisch behandelte COVID‑19 Patienten!");
+            " Neuinfektionen. Zur Zeit gibt es " + b.invaseivePatientsReturn + " Intensivmedizinisch behandelte COVID‑19 Patienten!");
             message.channel.send("Quelle: " + url);
             
         }
