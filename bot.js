@@ -12,6 +12,8 @@ import fetch from 'node-fetch';
 const querystring = require('querystring');
 import querystring from 'querystring';
 */
+
+
 const cooldowns = new Discord.Collection();
 
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
@@ -20,13 +22,9 @@ client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-const blueRoleEmoji = '💙';
-const gruenRoleEmoji = '💚';
-const dollarEmoji = ':dollar:';
-const channel = '802308065537818635';
-
 for (const file of commandFiles) {
-    import command from `./commands/${file}`;
+    const command = require(`./commands/${file}`);
+    //import command from `./commands/${file}`;
     client.commands.set(command.name, command);
 }
 
@@ -35,6 +33,11 @@ function readyDiscord() {
 }
 
 client.once('ready', readyDiscord);
+
+const blueRoleEmoji = '💙';
+const gruenRoleEmoji = '💚';
+const dollarEmoji = ':dollar:';
+const channel = '802308065537818635';
 
 client.on('messageReactionAdd', async (messageReaction, user) => {
     const message = messageReaction.message;
