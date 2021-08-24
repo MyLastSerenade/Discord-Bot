@@ -1,58 +1,18 @@
 //Only Works with the dependencies from https://elements.heroku.com/buildpacks/jontewks/puppeteer-heroku-buildpack
-const puppeteer = require('puppeteer');
-
+import parser from "./Services/parser.js";
 module.exports = {
     name: 'hs',
     cooldown: 5,
     description: 'scraping for some text',
     execute(message, args) {
-        const chromeOptions = {
-            headless: true,
-            defaultViewport: null,
-            args: [
-                "--no-sandbox"
-            ],
-        };
-        async function scrapeForSevenDayIncidence(url) {
-            const browser = await puppeteer.launch(chromeOptions);
-            const page = await browser.newPage();
-            await page.goto(url);
+        var xp = '/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b';
+        var url = 'https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/';
+        var cn = "im Kreis Heinsberg"
 
-            const [el] = await page.$x('/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b')
-            const sevenDayIncidence = await el.getProperty('textContent');
-            const sevenDayIncidenceReturn = await sevenDayIncidence.jsonValue();
-            browser.close();
-            
-            return { sevenDayIncidenceReturn }
-        }
+        const dpc = new parser();
 
-        async function scrapeForInvasivePatients(url){
-            const browser = await puppeteer.launch(chromeOptions);
-            const page = await browser.newPage();
-            await page.goto(url);
-
-            const [el] = await page.$x('//*[@id="weitereKennzahlen"]/div/div[1]/div/div/p[1]/b')
-            const invaseivePatients = await el.getProperty('textContent');
-            const invaseivePatientsReturn = await invaseivePatients.jsonValue();
-            browser.close();
-
-            return { invaseivePatientsReturn }
-        }
-
-        async function postToChannel(url, stadtName) {
-            const a = await scrapeForSevenDayIncidence('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
-            const b = await scrapeForInvasivePatients('https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/');
-
-            message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + a.sevenDayIncidenceReturn + 
-            " Neuinfektionen. Zur Zeit gibt es " + b.invaseivePatientsReturn + " Intensivmedizinisch behandelte COVID‑19 Patienten!");
-            message.channel.send("Quelle: " + url);
-            
-        }
-        
-    
-        postToChannel("https://www.corona-in-zahlen.de/landkreise/lk%20heinsberg/", "im Kreis Heinsberg")
-        
-
+        dpc.scrapeChannelForSevenDayIncidence(url, xp, cn);
+        dpc.scrapeChannelForIn(url, xp, cn);
 
     },
 };
