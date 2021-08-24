@@ -1,6 +1,6 @@
 
 //Only Works with the dependencies from https://elements.heroku.com/buildpacks/jontewks/puppeteer-heroku-buildpack
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
 module.exports = {
     name: 'lip',

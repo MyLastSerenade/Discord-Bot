@@ -1,10 +1,17 @@
-require('dotenv').config();
-const fs = require('fs');
-const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+//require('dotenv').config();
+import 'dotenv/config.js';
+//const fs = require('fs');
+import fs from 'fs';
+//const Discord = require('discord.js');
+import Discord from 'discord.js';
+//const { prefix, token } = require('./config.json');
+import { prefix, token } from './config.json';
+/*
 const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 const querystring = require('querystring');
-
+import querystring from 'querystring';
+*/
 const cooldowns = new Discord.Collection();
 
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });

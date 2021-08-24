@@ -1,5 +1,5 @@
-const axios = require('axios');
-const reload = require('./reload');
+//const axios = require('axios');
+import axios from 'axios';
 
 module.exports = {
     name: 'btc',

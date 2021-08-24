@@ -1,4 +1,4 @@
-const { MessageManager } = require("discord.js")
+//const { MessageManager } = require("discord.js")
 
 module.exports = {
     name: 'reload',
