@@ -26,7 +26,7 @@ const dollarEmoji = ':dollar:';
 const channel = '802308065537818635';
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
+    import command from `./commands/${file}`;
     client.commands.set(command.name, command);
 }
 
