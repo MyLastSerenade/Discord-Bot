@@ -9,11 +9,7 @@ const chromeOptions = {
 };
 
 export default class dataParserClass {
-    constructor(url, xpath) {
-        this.url = url;
-        this.xpath = xpath;
-        this.cityName = cityName;
-
+    constructor() {
     }
 
 
