@@ -5,7 +5,7 @@
   "main": "bot.js",
   "type": "module",
   "scripts": {
-    "start": "node bot.js  --experimental-json-modules"
+    "start": "node bot.js --experimental-json-modules"
   },
   "author": "",
   "license": "ISC",
