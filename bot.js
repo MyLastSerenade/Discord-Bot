@@ -1,11 +1,7 @@
-//require('dotenv').config();
-import 'dotenv/config.js';
-//const fs = require('fs');
-import fs from 'fs';
-//const Discord = require('discord.js');
-import Discord from 'discord.js';
-//const { prefix, token } = require('./config.json');
-import prefix from './config.json';
+require('dotenv').config();
+const fs = require('fs');
+const Discord = require('discord.js');
+const { prefix, token } = require('./config.json');
 /*
 const fetch = require('node-fetch');
 import fetch from 'node-fetch';

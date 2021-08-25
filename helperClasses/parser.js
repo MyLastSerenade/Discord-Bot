@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+const puppeteer = require('puppeteer');
 
 const chromeOptions = {
     headless: true,
@@ -38,3 +38,5 @@ export default class dataParserClass {
         message.channel.send("Quelle: " + url);
     }
 }
+
+module.exports = dataParserClass;

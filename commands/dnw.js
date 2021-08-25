@@ -1,5 +1,5 @@
 //Only Works with the dependencies from https://elements.heroku.com/buildpacks/jontewks/puppeteer-heroku-buildpack
-import puppeteer from 'puppeteer';
+const puppeteer = require('puppeteer');
 
 module.exports = {
     name: 'dnw',

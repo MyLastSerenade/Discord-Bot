@@ -1,5 +1,5 @@
-//const axios = require('axios');
-import axios from 'axios';
+//const axios = require('axios')
+const axios = require('axios');
 
 module.exports = {
     name: 'btc',
