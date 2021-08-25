@@ -1,5 +1,5 @@
 //Only Works with the dependencies from https://elements.heroku.com/buildpacks/jontewks/puppeteer-heroku-buildpack
-const parser = require("./helperClasses/parser");
+const parser = require("./parser");
 module.exports = {
     name: 'hs',
     cooldown: 5,
