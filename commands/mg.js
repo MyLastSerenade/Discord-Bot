@@ -11,8 +11,8 @@ module.exports = {
             defaultViewport: null,
             args: [
                 "--no-sandbox"
-            ],
-        };
+            ]
+        }
         
         async function scrapeForSevenDayIncidence(url) {
             const browser = await puppeteer.launch(chromeOptions);
