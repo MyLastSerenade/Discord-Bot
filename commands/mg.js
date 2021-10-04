@@ -32,7 +32,7 @@ module.exports = {
             const page = await browser.newPage();
             await page.goto(url);
 
-            const [el] = await page.$x('//*[@id="weitereKennzahlen"]/div/div[1]/div/div/p[1]/b')
+            const [el] = await page.$x('/html/body/div[2]/div[3]/div[1]/div/div/p[1]/b')
             const invaseivePatients = await el.getProperty('textContent');
             const invaseivePatientsReturn = await invaseivePatients.jsonValue();
             browser.close();
