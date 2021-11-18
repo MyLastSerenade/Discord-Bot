@@ -28,7 +28,7 @@ module.exports = {
             const text = await el.getProperty('textContent');
             const name = await text.jsonValue();
             browser.close();
-            console.log("Die 7-Tage-Inzidenz " + cityName + " liegt bei: " + name);
+            message.channel.send("Die 7-Tage-Inzidenz " + cityName + " liegt bei: " + name);
         }
 
         async function scrapeChannelForInvasivePathents(url, xpath) {
@@ -40,13 +40,14 @@ module.exports = {
             const text = await el.getProperty('textContent');
             const name = await text.jsonValue();
             browser.close();
-            console.log("Zur Zeit gibt es " + name + " Intensivmedizinisch behandelte COVID‑19 Patienten!");
-            console.log("Quelle: " + url);
+            message.channel.send("Zur Zeit gibt es " + name + " Intensivmedizinisch behandelte COVID‑19 Patienten!");
+            message.channel.send("Quelle: " + url);
         }
 
         
-        asyncscrapeChannelForSevenDayIncidence(url, xp, cn);
+        
         scrapeChannelForInvasivePathents(url, xp2);
+        asyncscrapeChannelForSevenDayIncidence(url, xp, cn);
 
 
     },
