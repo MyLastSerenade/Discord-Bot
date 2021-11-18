@@ -13,45 +13,42 @@ module.exports = {
                 "--no-sandbox"
             ]
         }
-        
-        async function scrapeForSevenDayIncidence(url) {
+
+        var xp = '/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b';
+        var xp2 = '/html/body/div[2]/div[3]/div[2]/div/div/p[1]/b';
+        var url = 'https://www.corona-in-zahlen.de/landkreise/sk%20m%C3%B6nchengladbach/';
+
+        var cn = "in Mönchengladbach"
+
+        async function asyncscrapeChannelForSevenDayIncidence(url, xpath, cityName) {
             const browser = await puppeteer.launch(chromeOptions);
             const page = await browser.newPage();
             await page.goto(url);
 
-            const [el] = await page.$x('/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b')
-            const sevenDayIncidence = await el.getProperty('textContent');
-            const sevenDayIncidenceReturn = await sevenDayIncidence.jsonValue();
+            const [el] = await page.$x(xpath)
+            const text = await el.getProperty('textContent');
+            const name = await text.jsonValue();
             browser.close();
-            
-            return { sevenDayIncidenceReturn }
+            message.channel.send("Die 7-Tage-Inzidenz " + cityName + " liegt bei: " + name);
         }
 
-        async function scrapeForInvasivePatients(url){
+        async function scrapeChannelForInvasivePathents(url, xpath) {
             const browser = await puppeteer.launch(chromeOptions);
             const page = await browser.newPage();
             await page.goto(url);
 
-            const [el] = await page.$x('/html/body/div[2]/div[3]/div[1]/div/div/p[1]/b')
-            const invaseivePatients = await el.getProperty('textContent');
-            const invaseivePatientsReturn = await invaseivePatients.jsonValue();
+            const [el] = await page.$x(xpath)
+            const text = await el.getProperty('textContent');
+            const name = await text.jsonValue();
             browser.close();
-
-            return { invaseivePatientsReturn }
-        }
-
-        async function postToChannel(url, stadtName) {
-            const a = await scrapeForSevenDayIncidence('https://www.corona-in-zahlen.de/landkreise/sk%20m%C3%B6nchengladbach/');
-            const b = await scrapeForInvasivePatients('https://www.corona-in-zahlen.de/landkreise/sk%20m%C3%B6nchengladbach/');
-
-            message.channel.send("Die 7-Tage-Inzidenz " + stadtName + " liegt bei: " + a.sevenDayIncidenceReturn + 
-            " Neuinfektionen. Zur Zeit gibt es " + b.invaseivePatientsReturn + " Intensivmedizinisch behandelte COVID‑19 Patienten!");
+            message.channel.send("Zur Zeit gibt es " + name + " Intensivmedizinisch behandelte COVID‑19 Patienten!");
             message.channel.send("Quelle: " + url);
-            
         }
+
         
-    
-        postToChannel("https://www.corona-in-zahlen.de/landkreise/sk%20m%C3%B6nchengladbach/", "in Mönchengladabch")
+        
+        scrapeChannelForInvasivePathents(url, xp2);
+        asyncscrapeChannelForSevenDayIncidence(url, xp, cn);
 
 
     },
