@@ -55,8 +55,9 @@ module.exports = {
                 })
                 .catch((err) => {
                     console.log('ERR', err)
-                }};
-        aoe4Top10(url)
+                });
 
+        }
+        aoe4Top10(url)
     }
 }
