@@ -29,22 +29,25 @@ module.exports = {
             'sec-fetch-site:': 'same-site',
             'user-agent:': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
         }
-
-        axios.post(url, {
-            "region": "7",
-            "versus": "players",
-            "matchType": "unranked",
-            "teamSize": "1v1",
-            "searchPlayer": "",
-            "page": 1,
-            "count": 100
-        }, config)
-            .then((res) => {
-                //console.log(res.status)
-                for (var i = 0; i < 10; i++) {
-                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[i].userName)
+        function aoe4Top10(url) {
+            axios.post(url, {
+                "region": "7",
+                "versus": "players",
+                "matchType": "unranked",
+                "teamSize": "1v1",
+                "searchPlayer": "",
+                "page": 1,
+                "count": 100
+            }, config)
+                .then((res) => {
+                    //console.log(res.status)
+                    for (var i = 0; i < 10; i++) {
+                        message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[i].userName)
+                    }
                 }
-            }
-            );
+                )
+        };
+        aoe4Top10(url)
+
     }
 }
