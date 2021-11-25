@@ -42,7 +42,7 @@ module.exports = {
             .then((res) => {
                 //console.log(res.status)
                 for (var i = 0; i < 10; i++) {
-                    console.log("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[i].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[i].userName)
                 }
             }
             );
