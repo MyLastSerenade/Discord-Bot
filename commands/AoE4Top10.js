@@ -29,6 +29,7 @@ module.exports = {
             'sec-fetch-site:': 'same-site',
             'user-agent:': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
         }
+
         function aoe4Top10(url) {
             axios.post(url, {
                 "region": "7",
@@ -41,12 +42,20 @@ module.exports = {
             }, config)
                 .then((res) => {
                     //console.log(res.status)
-                    for (var i = 0; i < 10; i++) {
-                        message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[i].userName)
-                    }
-                }
-                )
-        };
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[0].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[1].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[2].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[3].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[4].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[5].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[6].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[7].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[8].userName)
+                    message.channel.send("Platz #" + (i + 1) + " auf der Age of Empires 4 Ladder ist: " + res.data.items[9].userName)
+                })
+                .catch((err) => {
+                    console.log('ERR', err)
+                }};
         aoe4Top10(url)
 
     }
