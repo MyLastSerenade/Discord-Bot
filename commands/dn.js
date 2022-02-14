@@ -14,8 +14,8 @@ module.exports = {
             ],
         };
 
-        var xp = '/html/body/div[2]/div[2]/div[4]/div/div/p[1]/b';
-        var xp2 = '/html/body/div[2]/div[3]/div[2]/div/div/p[1]/b';
+        var xp = '/html/body/div[3]/div[2]/div[4]/div/div/p[1]/b';
+        var xp2 = '/html/body/div[3]/div[3]/div[1]/div/div/p[1]/b';
         var url = 'https://www.corona-in-zahlen.de/landkreise/lk%20d%C3%BCren/';
 
         var cn = "in DÜren"

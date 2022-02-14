@@ -13,8 +13,7 @@ module.exports = {
                 "--no-sandbox"
             ],
         };
-
-        var xp = '/html/body/div[2]/div[5]/div[2]/div[1]/div/div/p[1]/b';
+        var xp = '/html/body/div[3]/div[5]/div[2]/div[1]/div/div/p[1]/b';
         var url = 'https://www.corona-in-zahlen.de/weltweit/deutschland/';
 
         var cn = "in Deutschland!"
