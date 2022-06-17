@@ -29,7 +29,7 @@ module.exports = {
                     "\n#7 " + res.data.items[6].userName + " ELO: " + res.data.items[6].elo + 
                     "\n#8 " + res.data.items[7].userName + " ELO: " + res.data.items[7].elo + 
                     "\n#9 " + res.data.items[8].userName + " ELO: " + res.data.items[8].elo + 
-                    "\n#10  " + res.data.items[9].userName + " ELO: " + res.data.items[9].elo + )
+                    "\n#10  " + res.data.items[9].userName + " ELO: " + res.data.items[9].elo)
                 })
                 .catch((err) => {
                     console.log('ERR', err)
