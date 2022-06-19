@@ -23,17 +23,21 @@ function getDistrict(district){
 }
 
 async function districts(url, district) {
-        console.log(String(district))
+
         let dist = getDistrict(district)
         await axios.get(url + dist)
         .then((res) => {
             json = res.data.data
             if(json[dist] != undefined){
                 message.channel.send("Die 7 Tage Inzidenz in " + args + "beträgt: "+  json[dist].weekIncidence.toFixed(2))
-            } else 
-            message.channel.send("Etwas ist schief gelaufen!")
-            message.channel.send("\nBitte gib Heinsberg, Mönchengladbach, Düren, Lippe, Landshut oder Gelsenkirchen als Parameter an.")
-            })   
+            } else if(josn[dist].weekIncidence == undefined){
+                message.channel.send("Etwas ist schief gelaufen!")
+                message.channel.send("Bitte gib Heinsberg, Mönchengladbach, Düren, Lippe, Landshut oder Gelsenkirchen als Parameter an.")
+            } else {
+                message.channel.send("Etwas ist schief gelaufen!")
+                message.channel.send("Bitte gib Heinsberg, Mönchengladbach, Düren, Lippe, Landshut oder Gelsenkirchen als Parameter an.")
+            } 
+        }) 
 }
     
 
