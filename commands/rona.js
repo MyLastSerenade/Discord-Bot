@@ -23,9 +23,9 @@ function getDistrict(district){
 }
 
 async function districts(url, district) {
-        console.log(district)
+        console.log(String(district))
         let dist = getDistrict(district)
-        await axios.get(url + String(dist))
+        await axios.get(url + dist)
         .then((res) => {
             json = res.data.data
             if(json[dist] != undefined){
@@ -37,6 +37,6 @@ async function districts(url, district) {
 }
     
 
-districts(url, args);
+districts(url, String(args));
     }
 }
