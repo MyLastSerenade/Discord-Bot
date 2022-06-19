@@ -30,7 +30,7 @@ async function districts(url, district) {
             json = res.data.data
             if(json[dist] != undefined){
                 message.channel.send("Die 7 Tage Inzidenz in " + args + "beträgt: "+  json[dist].weekIncidence.toFixed(2))
-            } else if(josn[dist].weekIncidence == undefined){
+            } else if(josn == undefined){
                 message.channel.send("Etwas ist schief gelaufen!")
                 message.channel.send("Bitte gib Heinsberg, Mönchengladbach, Düren, Lippe, Landshut oder Gelsenkirchen als Parameter an.")
             } else {
