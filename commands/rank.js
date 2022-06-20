@@ -23,11 +23,11 @@ module.exports = {
             await axios.post(url, payload)
                 .then((res) => {
                     json = res.data
-                    message.channel.send(json.items.length + " Player with the Name " + name + " were found!")
+                    message.channel.send(json.items.length + " Player with the name " + name + " were found!")
                     json.items.forEach(element => {
                         message.channel.send("Region: " + element.region)
                         message.channel.send("ELO: " + element.elo)
-                        message.channel.send("Rank: " + element.rank)
+                        message.channel.send("Rank: " + element.rankLevel + " Number " + element.rank + " on the Ladder")
                     });
                 })
                 .catch((err) => {
