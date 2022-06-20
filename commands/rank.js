@@ -29,6 +29,7 @@ module.exports = {
                         json = res.data
                         message.channel.send(json.items.length + " Player with the name " + name + " were found!")
                         json.items.forEach(element => {
+                            message.channel.send(":o:     :o:     :o:     :o:")
                             message.channel.send("Region: " + element.region)
                             message.channel.send("ELO: " + element.elo)
                             message.channel.send("Rank: " + element.rankLevel + " Number " + element.rank + " on the Ladder")
