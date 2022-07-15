@@ -11,7 +11,7 @@ module.exports = {
         function aoe4Top10(url) {
             axios.post(url, {
                 "count": 100,
-                "matchType": 1,
+                "matchType": 2,
                 "page": 1,
                 "region": 7,
                 "searchPlayers": "",

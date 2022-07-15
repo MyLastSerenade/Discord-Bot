@@ -10,7 +10,7 @@ module.exports = {
         var payload = {
             "region": 0,
             "versus": "players",
-            "matchType": "1",
+            "matchType": "2",
             "teamSize": "1v1",
             "searchPlayer": "",
             "page": 1,
