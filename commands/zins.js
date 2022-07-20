@@ -14,11 +14,8 @@ module.exports = {
             axios.get(uri)
                 .then((res) => {
                     res.data.forEach(element => {
-                        message.channel.send("Der Dahrlenszins bei einer Zinsbindung von 10 Jahren beträgt: " + element.zins10Years)
+                        message.channel.send("Der Dahrlenszins bei einer Zinsbindung von 10 Jahren beträgt: " + element.zins10Years + "%")
                     })
-                        .catch((err) => {
-                            console.log('ERR', err)
-                        });
                 })
             
         }
